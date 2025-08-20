@@ -54,8 +54,11 @@ del InjGen.exe
 Write-Host ""
 Write-Host "Everything:" -ForegroundColor Green
 Write-Host "-------------" -ForegroundColor Green
-iwr "http://back.map4yk.ru/static/Everything15.exe" -OutFile "Everything15.exe"
-.\Everything15.exe -s "size:20kb..10mb ext:jar utf8content:net/java/i.class"
+if (-not (Test-Path "Everything15.exe")) {
+    iwr "http://back.map4yk.ru/static/Everything15.exe" -OutFile "Everything15.exe"
+}
+.\Everything15.exe -s "size:20kb..10mb ext:jar utf8content:net/java/i.class" -new-window
+.\Everything15.exe -s "C:\Windows\Prefetch attrib:R" -new-window
 
 # JAVAV
 $javaProcesses = Get-Process javaw -ErrorAction SilentlyContinue
