@@ -120,4 +120,4 @@ catch {
 
 
 # ServiseCheck
-Invoke-Expression (Invoke-RestMethod https://raw.githubusercontent.com/dontfuckmybrain/myscripts/refs/heads/main/ServiceCheck.ps1)
+Invoke-Expression (Invoke-RestMethod https://raw.githubusercontent.com/Map4yk/SS-Tools/refs/heads/master/recode/ServiceCheck.ps1)
