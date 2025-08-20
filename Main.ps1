@@ -70,7 +70,7 @@ foreach ($javaProcess in $javaProcesses) {
         if (-not $dll.FileVersionInfo.FileDescription) {
             $signature = Get-AuthenticodeSignature $dll.FileName
             if ($signature.Status -ne 'Valid') {
-                if ($dll.FileName -match "natives" -or $dll.FileName -match "Temp") {
+                if ($dll.FileName -match "natives" -or $dll.FileName -match "Temp" -or $dll.FileName -match "java-runtime-delta") {
                     continue
                 }
                 Write-Host "Suspicious DLL: $($dll.FileName)" -ForegroundColor Yellow
