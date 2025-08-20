@@ -1,7 +1,7 @@
 Write-Host ""
 Write-Host "Turning off screen recording:" -ForegroundColor Green
 Write-Host "-----------------------------" -ForegroundColor Green
-$obsProcess = Get-Process -Name "obs64", "obs32", "obs", "ayugram", "telegram", "nvcontainer", "gamebar", "wallpaper32", "wallpaper64", "steam" -ErrorAction SilentlyContinue # "discord"
+$obsProcess = Get-Process -Name "obs64", "obs32", "obs", "ayugram", "telegram", "nvcontainer", "gamebar", "wallpaper32", "wallpaper64", "steam", "discord" -ErrorAction SilentlyContinue
 
 if ($obsProcess) {
     Write-Host "A recording process has been found. Ending..." -ForegroundColor Yellow
