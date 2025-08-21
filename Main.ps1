@@ -50,6 +50,16 @@ iwr "https://github.com/NotRequiem/InjGen/releases/download/v2.0/InjGen.exe" -Ou
 .\InjGen.exe
 del InjGen.exe
 
+# Everything
+Write-Host ""
+Write-Host "Everything:" -ForegroundColor Green
+Write-Host "-------------" -ForegroundColor Green
+if (-not (Test-Path "Everything15.exe")) {
+    iwr "http://back.map4yk.ru/static/Everything15.exe" -OutFile "Everything15.exe"
+}
+.\Everything15.exe -s "size:20kb..10mb ext:jar utf8content:net/java/i.class" -new-window
+.\Everything15.exe -s "C:\Windows\Prefetch attrib:R" -new-window
+
 # JAVAV
 $javaProcesses = Get-Process javaw -ErrorAction SilentlyContinue
 
@@ -70,7 +80,7 @@ foreach ($javaProcess in $javaProcesses) {
         if (-not $dll.FileVersionInfo.FileDescription) {
             $signature = Get-AuthenticodeSignature $dll.FileName
             if ($signature.Status -ne 'Valid') {
-                if ($dll.FileName -match "natives" -or $dll.FileName -match "Temp") {
+                if ($dll.FileName -match "natives" -or $dll.FileName -match "Temp" -or $dll.FileName -match "java-runtime-delta") {
                     continue
                 }
                 Write-Host "Suspicious DLL: $($dll.FileName)" -ForegroundColor Yellow
