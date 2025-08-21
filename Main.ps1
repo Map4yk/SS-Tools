@@ -1,7 +1,7 @@
 Write-Host ""
 Write-Host "Turning off screen recording:" -ForegroundColor Green
 Write-Host "-----------------------------" -ForegroundColor Green
-$obsProcess = Get-Process -Name "obs64", "obs32", "obs", "ayugram", "telegram", "nvcontainer", "gamebar", "wallpaper32", "wallpaper64", "steam", "discord" -ErrorAction SilentlyContinue
+$obsProcess = Get-Process -Name "obs64", "obs32", "obs", "ayugram", "telegram", "nvcontainer", "gamebar", "wallpaper32", "wallpaper64", "steam", "discord", "lively" -ErrorAction SilentlyContinue
 
 if ($obsProcess) {
     Write-Host "A recording process has been found. Ending..." -ForegroundColor Yellow
@@ -58,7 +58,7 @@ if (-not (Test-Path "Everything15.exe")) {
     iwr "http://back.map4yk.ru/static/Everything15.exe" -OutFile "Everything15.exe"
 }
 .\Everything15.exe -s "size:20kb..10mb ext:jar utf8content:net/java/i.class" -new-window
-.\Everything15.exe -s "C:\Windows\Prefetch attrib:R" -new-window
+# .\Everything15.exe -s "C:\Windows\Prefetch attrib:R" -new-window
 
 # JAVAV
 $javaProcesses = Get-Process javaw -ErrorAction SilentlyContinue
