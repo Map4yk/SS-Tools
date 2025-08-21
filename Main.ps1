@@ -131,3 +131,6 @@ catch {
 
 # ServiseCheck
 Invoke-Expression (Invoke-RestMethod https://raw.githubusercontent.com/Map4yk/SS-Tools/refs/heads/master/recode/ServiceCheck.ps1)
+
+# BamParser
+Invoke-Expression (Invoke-RestMethod https://raw.githubusercontent.com/Map4yk/SS-Tools/refs/heads/master/recode/BamParserCLI.ps1)
