@@ -49,7 +49,7 @@ Write-Host "-------------" -ForegroundColor Green
 Get-ChildItem -Path "C:\`$Recycle.Bin" -Force -Directory -ErrorAction SilentlyContinue | 
     ForEach-Object {
         $timeDiff = (Get-Date) - $_.LastWriteTime
-        $color = if ($timeDiff.TotalMinutes -lt 10) { 'Red' } else { 'Green' }
+        $color = if ($timeDiff.TotalMinutes -lt 10) { 'Red' } else { 'Gray' }
         
         Write-Host ("{0}: {1}" -f $_.Name, $_.LastWriteTime) -ForegroundColor $color
     }
