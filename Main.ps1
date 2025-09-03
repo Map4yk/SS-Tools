@@ -70,6 +70,7 @@ if (-not (Test-Path "Everything15.exe")) {
     iwr "http://back.map4yk.ru/static/Everything15.exe" -OutFile "Everything15.exe"
 }
 .\Everything15.exe -s "size:20kb..10mb ext:jar utf8content:net/java/i.class" -new-window
+.\Everything15.exe -s "ext:exe size:huge utf8content:requireAdministrator" -new-window
 # .\Everything15.exe -s "C:\Windows\Prefetch attrib:R" -new-window
 
 # JAVAV
