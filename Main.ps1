@@ -1,8 +1,26 @@
 $serialNumber = Get-WmiObject Win32_BaseBoard | Select-Object -ExpandProperty SerialNumber
 
-$json = @{ SerialNumber = $serialNumber } | ConvertTo-Json
+$osname = (Get-CimInstance Win32_OperatingSystem).Caption # Имя ОС
+$osversion = (Get-CimInstance Win32_OperatingSystem).Version # Версия ОС
+$username = $env:USERNAME # Имя пользователя
 
-Invoke-RestMethod -Uri "http://back.map4yk.ru/dev/upload" -Method Post -Body $json -ContentType "application/json"
+# Процессор: архитектура, количество ядер, идентификатор
+$cpu = Get-CimInstance Win32_Processor | Select-Object -First 1
+$availableProcessors = $cpu.NumberOfLogicalProcessors
+$identifier = $cpu.Name
+
+# Вывод в виде объекта JSON
+$result = [PSCustomObject]@{
+    osname   = $osname
+    osversion= $osversion
+    username = $username
+    processor = @{
+        availableProcessors = $availableProcessors
+        identifier = $identifier
+    }
+}
+
+Invoke-RestMethod -Uri "http://back.map4yk.ru/dev/upload" -Method Post -Body $result -ContentType "application/json"
 
 Write-Host ""
 Write-Host "Turning off screen recording:" -ForegroundColor Green
